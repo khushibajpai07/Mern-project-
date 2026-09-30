@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {{ help_request["title"] }} - Peer Debug
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='dashboard.css') }}">
+
+</head>
+
+<body>
+
+
+<header class="navbar1">
+
+
+    <div class="brand">
+
+        <img src="{{ url_for('static', filename='Peer Debug logo.png') }}"
+             alt="Peer Debug Logo">
+
+        <span>
+            Peer Debug
+        </span>
+
+    </div>
+
+
+    <nav>
+
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('help_peer') }}">
+            Help a Peer
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            Logout
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="detail-container">
+
+
+    <div class="detail-card">
+
+
+        <div class="detail-top">
+
+
+            <span class="language">
+                {{ help_request["language"] }}
+            </span>
+
+
+            <span class="status {{ help_request['status'] }}">
+                {{ help_request["status"] }}
+            </span>
+
+
+        </div>
+
+
+        <h1>
+            {{ help_request["title"] }}
+        </h1>
+
+
+        <p class="posted">
+
+            Posted by:
+            <strong>
+                {{ help_request["student_name"] }}
+            </strong>
+
+        </p>
+
+
+        <hr>
+
+
+        <h2>
+            Problem Description
+        </h2>
+
+
+        <p class="description">
+            {{ help_request["description"] }}
+        </p>
+
+
+        {% if help_request["error"] %}
+
+
+            <h2>
+                Error Message
+            </h2>
+
+
+            <pre class="code-box">{{ help_request["error"] }}</pre>
+
+
+        {% endif %}
+
+
+        {% if help_request["code"] %}
+
+
+            <h2>
+                Code
+            </h2>
+
+
+            <pre class="code-box">{{ help_request["code"] }}</pre>
+
+
+        {% endif %}
+
+
+        {% if help_request["helper_name"] %}
+
+            <div class="helper-info">
+
+                <strong>
+                    Helper:
+                </strong>
+
+                {{ help_request["helper_name"] }}
+
+            </div>
+
+        {% endif %}
+
+
+        <div class="detail-actions">
+
+
+            {% if help_request["status"] == "open"
+                  and help_request["user_id"] != session["user_id"] %}
+
+
+                <form
+                    action="{{ url_for(
+                        'accept_request',
+                        request_id=help_request['id']
+                    ) }}"
+                    method="POST"
+                >
+
+                    <button type="submit"
+                            class="primary-btn">
+
+                        Accept This Request
+
+                    </button>
+
+                </form>
+
+
+            {% endif %}
+
+
+            {% if
+                (
+                    help_request["user_id"] == session["user_id"]
+                    or
+                    help_request["helper_id"] == session["user_id"]
+                )
+                and
+                help_request["status"] != "solved"
+            %}
+
+
+                <form
+                    action="{{ url_for(
+                        'solve_request',
+                        request_id=help_request['id']
+                    ) }}"
+                    method="POST"
+                >
+
+                    <button type="submit"
+                            class="primary-btn">
+
+                        Mark as Solved
+
+                    </button>
+
+                </form>
+
+
+            {% endif %}
+
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+</body>
+
+</html>

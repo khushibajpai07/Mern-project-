@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Ask for Help - Peer Debug</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='dashboard.css') }}">
+
+</head>
+
+<body>
+
+
+<header class="navbar1">
+
+
+    <div class="brand">
+
+        <img src="{{ url_for('static', filename='Peer Debug logo.png') }}"
+             alt="Peer Debug Logo">
+
+        <span>
+            Peer Debug
+        </span>
+
+    </div>
+
+
+    <nav>
+
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('help_peer') }}">
+            Help a Peer
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            Logout
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="form-container">
+
+
+    <div class="form-card">
+
+
+        <p class="small-title">
+            ASK FOR HELP
+        </p>
+
+
+        <h1>
+            Submit Your Coding Problem
+        </h1>
+
+
+        <p>
+            Explain your problem clearly so another
+            student can understand and help you.
+        </p>
+
+
+        {% if error %}
+
+            <div class="error">
+                {{ error }}
+            </div>
+
+        {% endif %}
+
+
+        <form action="{{ url_for('ask_help') }}"
+              method="POST">
+
+
+            <label>
+                Problem Title
+            </label>
+
+
+            <input
+                type="text"
+                name="title"
+                placeholder="Example: Python list index error"
+                required
+            >
+
+
+            <label>
+                Programming Language
+            </label>
+
+
+            <select name="language"
+                    required>
+
+                <option value="">
+                    Select language
+                </option>
+
+                <option value="Python">
+                    Python
+                </option>
+
+                <option value="C++">
+                    C++
+                </option>
+
+                <option value="Java">
+                    Java
+                </option>
+
+                <option value="JavaScript">
+                    JavaScript
+                </option>
+
+                <option value="C">
+                    C
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+
+            <label>
+                Problem Description
+            </label>
+
+
+            <textarea
+                name="description"
+                rows="6"
+                placeholder="Explain what you are trying to do..."
+                required
+            ></textarea>
+
+
+            <label>
+                Error Message
+            </label>
+
+
+            <textarea
+                name="error"
+                rows="4"
+                placeholder="Paste the error message here..."
+            ></textarea>
+
+
+            <label>
+                Your Code
+            </label>
+
+
+            <textarea
+                name="code"
+                rows="12"
+                placeholder="Paste your code here..."
+            ></textarea>
+
+
+            <button type="submit"
+                    class="primary-btn">
+
+                Submit Help Request
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+</main>
+
+
+</body>
+
+</html>

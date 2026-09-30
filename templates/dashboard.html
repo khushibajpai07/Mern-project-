@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - Peer Debug</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='dashboard.css') }}">
+
+</head>
+
+<body>
+
+
+<header class="navbar1">
+
+
+    <div class="brand">
+
+        <img src="{{ url_for('static', filename='Peer Debug logo.png') }}"
+             alt="Peer Debug Logo">
+
+        <span>
+            Peer Debug
+        </span>
+
+    </div>
+
+
+    <nav>
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        <a href="{{ url_for('dashboard') }}"
+           class="active">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            Logout
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="dashboard">
+
+
+    <section class="welcome">
+
+        <p class="small-title">
+            PEER DEBUG DASHBOARD
+        </p>
+
+
+        <h1>
+
+            Welcome,
+
+            <span class="gradient-text">
+                {{ session["user_name"] }}
+            </span>
+
+            👋
+
+        </h1>
+
+
+        <p>
+            What would you like to do today?
+        </p>
+
+    </section>
+
+
+    {% with messages = get_flashed_messages() %}
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <div class="success">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
+
+    <div class="dashboard-buttons">
+
+
+        <a href="{{ url_for('ask_help') }}"
+           class="dashboard-btn primary">
+
+            <span>
+                🆘
+            </span>
+
+            <h3>
+                Ask for Help
+            </h3>
+
+            <p>
+                Submit a coding problem
+                and find someone to help.
+            </p>
+
+        </a>
+
+
+        <a href="{{ url_for('help_peer') }}"
+           class="dashboard-btn secondary">
+
+            <span>
+                🤝
+            </span>
+
+            <h3>
+                Help a Peer
+            </h3>
+
+            <p>
+                Find students who need
+                help with coding problems.
+            </p>
+
+        </a>
+
+
+    </div>
+
+
+    <section class="requests">
+
+
+        <h2>
+            My Help Requests
+        </h2>
+
+
+        {% if my_requests %}
+
+
+            {% for item in my_requests %}
+
+
+                <div class="request-card">
+
+
+                    <div>
+
+
+                        <h3>
+                            {{ item["title"] }}
+                        </h3>
+
+
+                        <p>
+                            {{ item["description"] }}
+                        </p>
+
+
+                        <span>
+                            Language:
+                            {{ item["language"] }}
+                        </span>
+
+
+                    </div>
+
+
+                    <div class="request-right">
+
+
+                        <span class="status {{ item['status'] }}">
+                            {{ item["status"] }}
+                        </span>
+
+
+                        <a href="{{ url_for(
+                            'request_detail',
+                            request_id=item['id']
+                        ) }}">
+
+                            View
+
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+            {% endfor %}
+
+
+        {% else %}
+
+
+            <div class="empty">
+
+                <p>
+                    You haven't submitted any help requests yet.
+                </p>
+
+            </div>
+
+
+        {% endif %}
+
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 Peer Debug. All rights reserved.
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

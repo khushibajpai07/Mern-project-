@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f8fc;
+    color: #222;
+}
+
+
+.navbar1 {
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 40px;
+
+    background: white;
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.brand img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+
+.brand span {
+    font-size: 24px;
+    font-weight: 800;
+    color: #6c63ff;
+}
+
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+
+nav a:hover,
+nav a.active {
+    color: #6c63ff;
+}
+
+
+.login-container {
+    min-height: calc(100vh - 130px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+}
+
+
+.login-card {
+    width: 400px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+}
+
+
+.login-card h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+.login-card > p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+label {
+    margin-bottom: 7px;
+    font-weight: 600;
+}
+
+
+input {
+    padding: 13px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+}
+
+
+.primary-btn {
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #6c63ff;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.primary-btn:hover {
+    background: #554ee0;
+}
+
+
+.error {
+    background: #ffe5e5;
+
+    color: #c00;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+
+    text-align: center;
+}
+
+
+.success {
+    background: #e5ffe9;
+
+    color: #16802c;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+
+    text-align: center;
+}
+
+
+.register-text {
+    margin-top: 20px;
+}
+
+
+.register-text a {
+    color: #6c63ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+footer {
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+@media (max-width: 600px) {
+
+    .navbar1 {
+        padding: 0 15px;
+    }
+
+    nav {
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .login-card {
+        width: 100%;
+    }
+}

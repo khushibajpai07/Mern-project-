@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>About - Peer Debug</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='About-Page.css') }}">
+
+</head>
+
+<body>
+
+
+<header class="navbar1">
+
+    <div class="brand">
+
+        <img src="{{ url_for('static', filename='Peer Debug logo.png') }}"
+             alt="Peer Debug Logo">
+
+        <span>Peer Debug</span>
+
+    </div>
+
+
+    <nav>
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        <a href="{{ url_for('about') }}"
+           class="active">
+            About
+        </a>
+
+        <a href="{{ url_for('help_page') }}">
+            Help
+        </a>
+
+        {% if session.get("user_id") %}
+
+            <a href="{{ url_for('dashboard') }}">
+                Dashboard
+            </a>
+
+            <a href="{{ url_for('logout') }}">
+                Logout
+            </a>
+
+        {% else %}
+
+            <a href="{{ url_for('login') }}">
+                Login
+            </a>
+
+        {% endif %}
+
+    </nav>
+
+</header>
+
+
+<main class="about-page">
+
+
+<section class="about-hero">
+
+    <p class="small-title">
+        ABOUT PEER DEBUG
+    </p>
+
+
+    <h1>
+
+        Learn Together.
+
+        <span class="gradient-text">
+            Debug Together.
+        </span>
+
+    </h1>
+
+
+    <p class="about-intro">
+
+        Peer Debug is a collaborative platform designed
+        to help students solve programming problems by
+        connecting them with classmates, seniors,
+        and teaching assistants.
+
+    </p>
+
+</section>
+
+
+<section class="about-section">
+
+
+    <div class="about-card">
+
+        <h2>
+            💡 The Problem
+        </h2>
+
+        <p>
+
+            Students often get stuck while coding and
+            have to wait for a teacher or teaching
+            assistant to become available.
+
+            In a busy classroom, this can waste
+            valuable learning time.
+
+        </p>
+
+    </div>
+
+
+    <div class="about-card">
+
+        <h2>
+            🚀 Our Solution
+        </h2>
+
+        <p>
+
+            Peer Debug creates a simple help system
+            where students can submit their coding
+            doubts and other students, seniors,
+            or TAs can pick them up and help solve them.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="how-section">
+
+    <h2>
+        How Peer Debug Works
+    </h2>
+
+
+    <div class="steps">
+
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <h3>
+                Ask for Help
+            </h3>
+
+            <p>
+                Submit your coding problem,
+                error, or doubt.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <h3>
+                Find a Helper
+            </h3>
+
+            <p>
+                A peer, senior, or TA can
+                accept your request.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h3>
+                Debug Together
+            </h3>
+
+            <p>
+                Discuss the problem and
+                understand the solution.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                4
+            </div>
+
+            <h3>
+                Problem Solved
+            </h3>
+
+            <p>
+                Mark the ticket as solved
+                and continue learning.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<section class="why-section">
+
+    <h2>
+        Why Peer Debug?
+    </h2>
+
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <span>⚡</span>
+
+            <h3>
+                Faster Help
+            </h3>
+
+            <p>
+                Spend less time waiting
+                and more time learning.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <span>🤝</span>
+
+            <h3>
+                Peer Learning
+            </h3>
+
+            <p>
+                Learn from classmates,
+                seniors, and experienced programmers.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <span>💻</span>
+
+            <h3>
+                Better Debugging
+            </h3>
+
+            <p>
+                Understand why your code
+                is failing instead of simply
+                getting the answer.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <span>📚</span>
+
+            <h3>
+                Learn Together
+            </h3>
+
+            <p>
+                Turn individual problems
+                into shared learning opportunities.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<section class="about-bottom">
+
+    <h2>
+
+        Don't stay stuck.
+
+        <span class="gradient-text">
+            Ask your peers.
+        </span>
+
+    </h2>
+
+
+    <p>
+
+        Peer Debug is built to make coding
+        education more collaborative,
+        faster, and more engaging.
+
+    </p>
+
+
+    <a href="{{ url_for('ask_help') }}"
+       class="primary-btn">
+
+        Get Started
+
+    </a>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+    <p align="center">
+        © 2026 Peer Debug. All rights reserved.
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

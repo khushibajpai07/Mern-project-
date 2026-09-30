@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Peer Debug</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='frontend.css') }}">
+
+</head>
+
+<body>
+
+
+<header class="navbar1">
+
+    <div class="brand">
+
+        <img src="{{ url_for('static', filename='Peer Debug logo.png') }}"
+             alt="Peer Debug Logo">
+
+        <span>Peer Debug</span>
+
+    </div>
+
+
+    <nav>
+
+        <a href="{{ url_for('home') }}"
+           class="active">
+            Home
+        </a>
+
+        <a href="{{ url_for('about') }}">
+            About
+        </a>
+
+        <a href="{{ url_for('help_page') }}">
+            Help
+        </a>
+
+        {% if session.get("user_id") %}
+
+            <a href="{{ url_for('dashboard') }}">
+                Dashboard
+            </a>
+
+            <a href="{{ url_for('logout') }}">
+                Logout
+            </a>
+
+        {% else %}
+
+            <a href="{{ url_for('login') }}">
+                Login
+            </a>
+
+        {% endif %}
+
+    </nav>
+
+</header>
+
+
+<main class="hero">
+
+    <h1>
+
+        Welcome to
+
+        <span class="gradient-text">
+            Peer Debug
+        </span>
+
+    </h1>
+
+
+    <p>
+
+        Stuck on a coding problem?
+
+        Get help from your peers
+        and solve bugs together.
+
+    </p>
+
+
+    <div class="buttons">
+
+        <a href="{{ url_for('ask_help') }}"
+           class="primary-btn">
+
+            Ask for Help
+
+        </a>
+
+
+        <a href="{{ url_for('help_peer') }}"
+           class="secondary-btn">
+
+            Help a Peer
+
+        </a>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 Peer Debug. All rights reserved.
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

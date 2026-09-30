@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Help a Peer - Peer Debug</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='dashboard.css') }}">
+
+</head>
+
+<body>
+
+
+<header class="navbar1">
+
+
+    <div class="brand">
+
+        <img src="{{ url_for('static', filename='Peer Debug logo.png') }}"
+             alt="Peer Debug Logo">
+
+        <span>
+            Peer Debug
+        </span>
+
+    </div>
+
+
+    <nav>
+
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('help_peer') }}"
+           class="active">
+            Help a Peer
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            Logout
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="peer-page">
+
+
+<section class="page-header">
+
+    <p class="small-title">
+        HELP A PEER
+    </p>
+
+
+    <h1>
+        Students Who Need Your Help
+    </h1>
+
+
+    <p>
+        Choose a problem you understand
+        and help another student solve it.
+    </p>
+
+</section>
+
+
+<section class="peer-requests">
+
+
+    {% if requests %}
+
+
+        {% for item in requests %}
+
+
+            <div class="peer-card">
+
+
+                <div class="peer-info">
+
+
+                    <div class="language">
+                        {{ item["language"] }}
+                    </div>
+
+
+                    <h2>
+                        {{ item["title"] }}
+                    </h2>
+
+
+                    <p>
+                        {{ item["description"] }}
+                    </p>
+
+
+                    <p class="student">
+
+                        Posted by:
+                        <strong>
+                            {{ item["student_name"] }}
+                        </strong>
+
+                    </p>
+
+
+                </div>
+
+
+                <div class="peer-action">
+
+
+                    <a href="{{ url_for(
+                        'request_detail',
+                        request_id=item['id']
+                    ) }}"
+                       class="secondary-btn">
+
+                        View Problem
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        {% endfor %}
+
+
+    {% else %}
+
+
+        <div class="empty">
+
+            <h2>
+                🎉 No open requests
+            </h2>
+
+            <p>
+                There are currently no students
+                waiting for help.
+            </p>
+
+        </div>
+
+
+    {% endif %}
+
+
+</section>
+
+
+</main>
+
+
+</body>
+
+</html>
